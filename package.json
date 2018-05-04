@@ -1,0 +1,29 @@
+{
+  "name": "simone",
+  "version": "0.0.1",
+  "description": "Standardized Online Judge API",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build",
+    "flow": "flow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maratonime/simone.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maratonime/simone/issues"
+  },
+  "homepage": "https://github.com/maratonime/simone#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.71.0"
+  },
+  "dependencies": {
+    "request": "^2.85.0"
+  }
+}
