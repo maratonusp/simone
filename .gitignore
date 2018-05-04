@@ -1,6 +1,9 @@
 # files from lib/
 lib/
 
+# vim stuff
+*.swp
+
 # Logs
 logs
 *.log
