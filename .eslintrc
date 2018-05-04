@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "no-unused-vars": ["error"],
+    "no-trailing-spaces": ["error"],
+    "space-infix-ops": ["error"],
+  }
+}
