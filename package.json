@@ -7,7 +7,8 @@
     "build": "babel src/ -d lib/ && flow-copy-source src lib",
     "prepublish": "npm run build",
     "flow": "flow",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "files": [
     "lib"
@@ -23,8 +24,11 @@
   "homepage": "https://github.com/maratonime/simone#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.46.3",
     "flow-bin": "^0.71.0",
     "flow-copy-source": "^1.3.0",
     "jest": "^22.4.3"

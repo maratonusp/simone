@@ -21,10 +21,10 @@ export function getContests(): Promise<Array<Contest> | Object> {
             duration: info.durationSeconds,
             url: 'http://codeforces.com/contests/' + info.id
           };
-          
+
           // setting fields that may be absent
           if ('startTimeSeconds' in info)
-            contest.startTime = new Date(parseInt(info.startTimeSeconds)*1000);
+            contest.startTime = new Date(parseInt(info.startTimeSeconds) * 1000);
           if ('description' in info)
             contest.description = info.description;
 
