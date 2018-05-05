@@ -35,5 +35,8 @@
   },
   "dependencies": {
     "request": "^2.85.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["/node_modules/", "/lib/"]
   }
 }
