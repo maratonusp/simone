@@ -1,0 +1,1 @@
+import { getContests } from './getContests';
