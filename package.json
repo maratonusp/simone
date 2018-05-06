@@ -6,8 +6,9 @@
   "scripts": {
     "build": "babel src/ -d lib/ && flow-copy-source src lib",
     "prepublish": "npm run build",
+    "test": "npm run lint && npm run flow && npm run jest",
     "flow": "flow",
-    "test": "jest",
+    "jest": "jest",
     "lint": "eslint ."
   },
   "files": [
@@ -37,6 +38,9 @@
     "request": "^2.85.0"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/", "/lib/"]
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/"
+    ]
   }
 }
