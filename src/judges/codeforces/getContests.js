@@ -11,12 +11,15 @@ type CFContest = {
   phase: string,
 };
 
-export async function getContests(): Promise<Array<Contest>> {
+export async function getContests(
+  from?: Date,
+  to?: Date,
+): Promise<Array<Contest>> {
   const cfData: { result: Array<CFContest> } = JSON.parse(
     await request('http://codeforces.com/api/contest.list'),
   );
 
-  return cfData.result.map((contestData: CFContest) => {
+  let contests = cfData.result.map((contestData: CFContest) => {
     // setting required fields
     const contest: Contest = {
       name: contestData.name,
@@ -45,4 +48,18 @@ export async function getContests(): Promise<Array<Contest>> {
 
     return contest;
   });
+
+  if (from) {
+    const localFrom = from;
+    contests = contests.filter(
+      contest => contest.startTime != null && contest.startTime >= localFrom,
+    );
+  }
+  if (to) {
+    const localTo = to;
+    contests = contests.filter(
+      contest => contest.startTime != null && contest.startTime <= localTo,
+    );
+  }
+  return contests;
 }
