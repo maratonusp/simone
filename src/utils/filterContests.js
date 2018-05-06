@@ -7,13 +7,15 @@ export function filterContests(
   to?: Date,
 ): Array<Contest> {
   contests = contests.filter(contest => {
-    if (from instanceof Date && contest.startTime instanceof Date)
-      return contest.startTime >= from;
+    if (from instanceof Date)
+      if (contest.startTime instanceof Date) return contest.startTime >= from;
+      else return false;
     else return true;
   });
   contests = contests.filter(contest => {
-    if (to instanceof Date && contest.startTime instanceof Date)
-      return contest.startTime <= to;
+    if (to instanceof Date)
+      if (contest.startTime instanceof Date) return contest.startTime <= to;
+      else return false;
     else return true;
   });
   return contests;
