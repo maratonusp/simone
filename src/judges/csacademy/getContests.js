@@ -39,7 +39,7 @@ export function getContests(): Promise<Array<Contest> | Object> {
             }
 
             contest.state = currentTime < startTime ? 'UPCOMING' : 'RUNNING';
-            if (contest.duration != null && currentTime > startTime + contest.duration)
+            if (contest.duration != null && currentTime > new Date(startTime + contest.duration))
               contest.state = 'FINISHED';
           }
 
