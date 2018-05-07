@@ -36,7 +36,9 @@
     "jest": "^22.4.3"
   },
   "dependencies": {
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.5",
+    "jsdom": "^11.10.0",
+    "request": "^2.85.0"
   },
   "jest": {
     "testPathIgnorePatterns": [
