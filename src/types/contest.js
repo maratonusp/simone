@@ -7,7 +7,7 @@ export type Contest = {
 	code: string;
 	judge: Judge;
 	startTime?: Date;
-	duration?: number;
+	duration: number;
 	state?: State;
 	url: string;
 	description?: string;

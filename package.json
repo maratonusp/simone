@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src/ -d lib/ && flow-copy-source src lib",
-    "prepare": "npm run build",
+    "prepublish": "npm run build",
     "flow": "flow",
     "test": "jest",
     "lint": "eslint ."
@@ -37,9 +37,6 @@
     "request": "^2.85.0"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/lib/"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/", "/lib/"]
   }
 }
