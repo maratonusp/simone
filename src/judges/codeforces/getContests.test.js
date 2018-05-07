@@ -3,12 +3,12 @@ const request = require('request');
 import { getContests } from './getContests';
 
 function testContests(...contests) {
-  request.mockImplementation((url, callback) => {
-    setTimeout(() => callback(null, {statusCode: 200}, JSON.stringify({
+  request.mockReturnValueOnce(new Promise(function(resolve) {
+    setTimeout(() => resolve(JSON.stringify({
       status: 'OK',
       result: contests
     })), 10);
-  });
+  }));
   return expect(getContests()).resolves.toMatchObject(contests.map(contest => ({
     name: contest.name,
     code: contest.id,
