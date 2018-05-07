@@ -1,6 +1,6 @@
 jest.mock('request');
 const request = require('request');
-import { getContests } from './getContests';
+import { getContests } from './../../../src/judges/codeforces/getContests';
 
 function testContests(...contests) {
   request.mockReturnValueOnce(new Promise(function(resolve) {
