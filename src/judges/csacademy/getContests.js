@@ -28,21 +28,19 @@ export function getContests(): Promise<Array<Contest> | Object> {
           };
 
           // setting fields that may be absent
-          if ('startTime' in info && info.startTime != null) {
+          if ('startTime' in info && info.startTime != null)
             contest.startTime = new Date(parseInt(info.startTime) * 1000);
+          if (contest.startTime != null) {
+            let startTime: Date = contest.startTime;
+            let currentTime: Date = new Date();
             if ('endTime' in info && info.endTime != null) {
-              // seting contest duration
               let endTime: Date = new Date(parseInt(info.endTime) * 1000);
-              contest.duration = Math.abs(endTime - contest.startTime) / 1000;
-
-              // setting contest state
-              if (Date.now() < contest.startTime)
-                contest.state = 'UPCOMING';
-              else if (Date.now() >= contest.startTime && Date.now() <= endTime)
-                contest.state = 'RUNNING';
-              else if (Date.now() > endTime)
-                contest.state = 'FINISHED';
+              contest.duration = Math.max(endTime - startTime, 0);
             }
+
+            contest.state = currentTime < startTime ? 'UPCOMING' : 'RUNNING';
+            if (contest.duration != null && currentTime > startTime + contest.duration)
+              contest.state = 'FINISHED';
           }
 
           contests.push(contest);
