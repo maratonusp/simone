@@ -18,14 +18,13 @@ export function getContests(): Promise<Array<Contest> | Object> {
             name: info.name,
             code: info.id,
             judge: 'codeforces',
+            duration: info.durationSeconds,
             url: 'http://codeforces.com/contests/' + info.id
           };
 
           // setting fields that may be absent
           if ('startTimeSeconds' in info)
             contest.startTime = new Date(parseInt(info.startTimeSeconds) * 1000);
-          if ('durationSeconds' in info)
-            contest.duration = info.durationSeconds;
           if ('description' in info)
             contest.description = info.description;
 
@@ -44,4 +43,4 @@ export function getContests(): Promise<Array<Contest> | Object> {
         reject(error);
     });
   });
-};
+}
