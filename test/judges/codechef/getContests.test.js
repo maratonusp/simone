@@ -66,7 +66,7 @@ test('retrieve all contests', () => {
       'state': 'FINISHED',
       'url': 'https:\/\/www.codechef.com\/COX2018'
     }
-  ]
+  ];
   return expect(getContests()).resolves.toEqual(expectedReturn);
 });
 
