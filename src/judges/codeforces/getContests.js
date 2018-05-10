@@ -13,13 +13,14 @@ export async function getContests(): Promise<Array<Contest>> {
       name: contestData.name,
       code: contestData.id,
       judge: 'codeforces',
-      duration: contestData.durationSeconds,
       url: 'http://codeforces.com/contests/' + contestData.id
     };
 
     // setting fields that may be absent
     if ('startTimeSeconds' in contestData)
       contest.startTime = new Date(parseInt(contestData.startTimeSeconds) * 1000);
+    if ('durationSeconds' in info)
+      contest.duration = contestData.durationSeconds;
     if ('description' in contestData)
       contest.description = contestData.description;
 
