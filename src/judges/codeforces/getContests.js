@@ -19,7 +19,7 @@ export async function getContests(): Promise<Array<Contest>> {
     // setting fields that may be absent
     if ('startTimeSeconds' in contestData)
       contest.startTime = new Date(parseInt(contestData.startTimeSeconds) * 1000);
-    if ('durationSeconds' in info)
+    if ('durationSeconds' in contestData)
       contest.duration = contestData.durationSeconds;
     if ('description' in contestData)
       contest.description = contestData.description;
