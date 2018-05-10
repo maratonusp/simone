@@ -2,12 +2,19 @@
 import request from 'request-promise-native';
 import type { Contest } from '../../types';
 
+type CFContest = {
+  name: string,
+  id: string,
+  startTimeSeconds?: number,
+  durationSeconds?: number,
+  description?: string,
+  phase: string
+};
+
 export async function getContests(): Promise<Array<Contest>> {
-  const responseBody = await request('http://codeforces.com/api/contest.list');
-  const contests: Array<Contest> = [];
+  const cfData : {result: Array<CFContest>} = JSON.parse(await request('http://codeforces.com/api/contest.list'));
 
-  for(let contestData: Object of JSON.parse(responseBody).result) {
-
+  return cfData.result.map((contestData: CFContest) => {
     // setting required fields
     const contest: Contest = {
       name: contestData.name,
@@ -17,11 +24,11 @@ export async function getContests(): Promise<Array<Contest>> {
     };
 
     // setting fields that may be absent
-    if ('startTimeSeconds' in contestData)
-      contest.startTime = new Date(parseInt(contestData.startTimeSeconds) * 1000);
-    if ('durationSeconds' in contestData)
+    if (contestData.startTimeSeconds != null)
+      contest.startTime = new Date(contestData.startTimeSeconds * 1000);
+    if (contestData.durationSeconds != null)
       contest.duration = contestData.durationSeconds;
-    if ('description' in contestData)
+    if (contestData.description != null)
       contest.description = contestData.description;
 
     // setting contest state
@@ -32,7 +39,6 @@ export async function getContests(): Promise<Array<Contest>> {
     else if (contestData.phase === 'FINISHED')
       contest.state = 'FINISHED';
 
-    contests.push(contest);
-  }
-  return contests;
+    return contest;
+  });
 }
