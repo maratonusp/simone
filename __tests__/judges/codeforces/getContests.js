@@ -3,12 +3,10 @@ const request = require('request');
 import { getContests } from './../../../src/judges/codeforces/getContests';
 
 function testContests(...contests) {
-  request.mockReturnValueOnce(new Promise(function(resolve) {
-    setTimeout(() => resolve(JSON.stringify({
-      status: 'OK',
-      result: contests
-    })), 10);
-  }));
+  request.mockReturnValueOnce(Promise.resolve(JSON.stringify({
+    status: 'OK',
+    result: contests
+  })));
   return expect(getContests()).resolves.toMatchObject(contests.map(contest => ({
     name: contest.name,
     code: contest.id,
