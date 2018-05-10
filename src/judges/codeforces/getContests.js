@@ -3,34 +3,32 @@ import request from 'request-promise-native';
 import type { Contest } from '../../types';
 
 export async function getContests(): Promise<Array<Contest>> {
-  const body = await request('http://codeforces.com/api/contest.list');
+  const responseBody = await request('http://codeforces.com/api/contest.list');
   const contests: Array<Contest> = [];
 
-  const data: Object = JSON.parse(body).result;
-  for (let index: string in data) {
-    const info: Object = data[index];
+  for(let contestData: Object of JSON.parse(responseBody).result) {
 
     // setting required fields
     const contest: Contest = {
-      name: info.name,
-      code: info.id,
+      name: contestData.name,
+      code: contestData.id,
       judge: 'codeforces',
-      duration: info.durationSeconds,
-      url: 'http://codeforces.com/contests/' + info.id
+      duration: contestData.durationSeconds,
+      url: 'http://codeforces.com/contests/' + contestData.id
     };
 
     // setting fields that may be absent
-    if ('startTimeSeconds' in info)
-      contest.startTime = new Date(parseInt(info.startTimeSeconds) * 1000);
-    if ('description' in info)
-      contest.description = info.description;
+    if ('startTimeSeconds' in contestData)
+      contest.startTime = new Date(parseInt(contestData.startTimeSeconds) * 1000);
+    if ('description' in contestData)
+      contest.description = contestData.description;
 
     // setting contest state
-    if (info.phase === 'BEFORE')
+    if (contestData.phase === 'BEFORE')
       contest.state = 'UPCOMING';
-    else if (['CODING', 'PENDING_SYSTEM_TEST', 'SYSTEM_TEST'].includes(info.phase))
+    else if (['CODING', 'PENDING_SYSTEM_TEST', 'SYSTEM_TEST'].includes(contestData.phase))
       contest.state = 'RUNNING';
-    else if (info.phase === 'FINISHED')
+    else if (contestData.phase === 'FINISHED')
       contest.state = 'FINISHED';
 
     contests.push(contest);
