@@ -1,7 +1,3 @@
-console.log = s => {
-  process.stdout.write(s + '\n');
-};
-
 import { getContests } from '../../../src/judges/codechef/getContests';
 import { JSDOM } from 'jsdom';
 import * as MockDate from 'mockdate';
