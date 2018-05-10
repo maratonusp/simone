@@ -5,7 +5,7 @@ import type { State } from '../../types';
 
 // TODO: row should be an HTMLTableRowElement, however flow has an issue
 // concerning that. See https://github.com/facebook/flow/issues/6264
-function contestDataFrom(row: any): Contest {
+function parse(row: any): Contest {
   const cells: HTMLCollection<HTMLTableCellElement> = row.cells;
 
   let code: string = cells[0].textContent;
@@ -47,8 +47,9 @@ export function getContests(): Promise<Array<Contest>> {
 
         contestsTables.forEach(table => {
           const rows: HTMLCollection<HTMLTableRowElement> = table.tBodies[0].rows;
-          for(let i: number = 0; i < rows.length; i++)
-            contests.push(contestDataFrom(rows[i]));
+          Array.from(rows).forEach(row => {
+            contests.push(parse(row));
+          });
         });
 
         resolve(contests);
