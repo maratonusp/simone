@@ -4,7 +4,7 @@ import type { Contest } from '../types/contest';
 import judges from '../judges';
 
 async function getContests(): Promise<Array<Contest>> {
-  const ans: Array<Contest> = [];
+  const contests: Array<Contest> = [];
   const promises: Array<Promise<Array<Contest>>> = [];
   Object.keys(judges).forEach(judge => {
     promises.push(judges[judge].getContests().catch(
@@ -12,9 +12,9 @@ async function getContests(): Promise<Array<Contest>> {
     ));
   });
   const results = await Promise.all(promises);
-  for(const contests of results)
-    ans.push(...contests);
-  return ans;
+  for(const contestList of results)
+    contests.push(...contestList);
+  return contests;
 }
 
 export default {

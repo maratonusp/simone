@@ -42,6 +42,9 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/lib/"
+    ],
+    "testMatch": [
+      "**/tests/**/*.js?(x)"
     ]
   }
 }
