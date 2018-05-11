@@ -2,7 +2,7 @@
 import request from 'request';
 import type { Contest } from '../../types';
 
-export function getContests(): Promise<Array<Contest> | Object> {
+export function getContests(): Promise<Array<Contest>> {
   return new Promise((resolve, reject) => {
     // making request to csacademy website
     var options = {

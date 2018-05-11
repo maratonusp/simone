@@ -1,47 +1,44 @@
 // @flow
-import request from 'request';
+import request from 'request-promise-native';
 import type { Contest } from '../../types';
 
-export function getContests(): Promise<Array<Contest> | Object> {
-  return new Promise((resolve, reject) => {
-    // making request to the codeforces api
-    request('http://codeforces.com/api/contest.list', (error: Object, response: Object, body: string) => {
-      if (response && response.statusCode == 200) {
-        let contests: Array<Contest> = [];
-
-        let data: Object = JSON.parse(body).result;
-        for (let index: string in data) {
-          let info: Object = data[index];
-
-          // setting required fields
-          let contest: Contest = {
-            name: info.name,
-            code: info.id,
-            judge: 'codeforces',
-            url: 'http://codeforces.com/contests/' + info.id
-          };
-
-          // setting fields that may be absent
-          if ('startTimeSeconds' in info)
-            contest.startTime = new Date(parseInt(info.startTimeSeconds) * 1000);
-          if ('durationSeconds' in info)
-            contest.duration = info.durationSeconds;
-          if ('description' in info)
-            contest.description = info.description;
-
-          // setting contest state
-          if (info.phase === 'BEFORE')
-            contest.state = 'UPCOMING';
-          else if (['CODING', 'PENDING_SYSTEM_TEST', 'SYSTEM_TEST'].includes(info.phase))
-            contest.state = 'RUNNING';
-          else if (info.phase === 'FINISHED')
-            contest.state = 'FINISHED';
-
-          contests.push(contest);
-        }
-        resolve(contests);
-      } else
-        reject(error);
-    });
-  });
+type CFContest = {
+  name: string,
+  id: string,
+  startTimeSeconds?: number,
+  durationSeconds?: number,
+  description?: string,
+  phase: string
 };
+
+export async function getContests(): Promise<Array<Contest>> {
+  const cfData : {result: Array<CFContest>} = JSON.parse(await request('http://codeforces.com/api/contest.list'));
+
+  return cfData.result.map((contestData: CFContest) => {
+    // setting required fields
+    const contest: Contest = {
+      name: contestData.name,
+      code: contestData.id,
+      judge: 'codeforces',
+      url: 'http://codeforces.com/contests/' + contestData.id
+    };
+
+    // setting fields that may be absent
+    if (contestData.startTimeSeconds != null)
+      contest.startTime = new Date(contestData.startTimeSeconds * 1000);
+    if (contestData.durationSeconds != null)
+      contest.duration = contestData.durationSeconds;
+    if (contestData.description != null)
+      contest.description = contestData.description;
+
+    // setting contest state
+    if (contestData.phase === 'BEFORE')
+      contest.state = 'UPCOMING';
+    else if (['CODING', 'PENDING_SYSTEM_TEST', 'SYSTEM_TEST'].includes(contestData.phase))
+      contest.state = 'RUNNING';
+    else if (contestData.phase === 'FINISHED')
+      contest.state = 'FINISHED';
+
+    return contest;
+  });
+}
