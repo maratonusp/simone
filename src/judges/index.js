@@ -6,5 +6,5 @@ import codechef from './codechef';
 export default {
   codeforces: codeforces,
   csacademy: csacademy,
-  codechef: codechef
+  codechef: codechef,
 };

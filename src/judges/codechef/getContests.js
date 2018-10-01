@@ -8,17 +8,17 @@ function parse(row: HTMLTableRowElement): Contest {
   // See https://github.com/facebook/flow/issues/6264
   const cells: HTMLCollection<HTMLTableCellElement> = (row: any).cells;
 
-  let code: string = cells[0].textContent;
-  let name: string = cells[1].children[0].textContent;
-  let url: string = 'https://www.codechef.com/' + code;
-  let startTime: Date = new Date(cells[2].dataset['starttime']);
-  let endTime: Date = new Date(cells[3].dataset['endtime']);
-  let duration: number = (endTime.getTime() - startTime.getTime()) / 1000;
+  const code: string = cells[0].textContent;
+  const name: string = cells[1].children[0].textContent;
+  const url: string = 'https://www.codechef.com/' + code;
+  const startTime: Date = new Date(cells[2].dataset['starttime']);
+  const endTime: Date = new Date(cells[3].dataset['endtime']);
+  const duration: number = (endTime.getTime() - startTime.getTime()) / 1000;
 
   let state: State;
-  let now = new Date();
-  if(startTime > now) state = 'UPCOMING';
-  else if(endTime <= now) state = 'FINISHED';
+  const now = new Date();
+  if (startTime > now) state = 'UPCOMING';
+  else if (endTime <= now) state = 'FINISHED';
   else state = 'RUNNING';
 
   return {
@@ -28,7 +28,7 @@ function parse(row: HTMLTableRowElement): Contest {
     startTime: startTime,
     duration: duration,
     state: state,
-    url: url
+    url: url,
   };
 }
 
@@ -37,9 +37,11 @@ export async function getContests(): Promise<Array<Contest>> {
   const dom: any = JSDOM.fromURL('https://www.codechef.com/contests');
   const document: Document = dom.window.document;
 
-  const contestsTables: NodeList<HTMLElement> = document.querySelectorAll('table.dataTable');
+  const contestsTables: NodeList<HTMLElement> = document.querySelectorAll(
+    'table.dataTable',
+  );
 
-  let contests: Array<Contest> = [];
+  const contests: Array<Contest> = [];
 
   contestsTables.forEach(table => {
     if (table instanceof HTMLTableElement) {

@@ -1,10 +1,6 @@
 {
-  "extends": [
-    "plugin:flowtype/recommended"
-  ],
-  "plugins": [
-    "flowtype"
-  ],
+  "extends": ["plugin:flowtype/recommended", "prettier", "prettier/flowtype"],
+  "plugins": ["flowtype", "prettier"],
   "rules": {
     "indent": ["error", 2],
     "semi": ["error", "always"],
@@ -12,5 +8,7 @@
     "no-unused-vars": ["error"],
     "no-trailing-spaces": ["error"],
     "space-infix-ops": ["error"],
+    "prefer-const": ["error"],
+    "prettier/prettier": ["error"]
   }
 }

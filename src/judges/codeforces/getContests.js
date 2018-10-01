@@ -8,11 +8,13 @@ type CFContest = {
   startTimeSeconds?: number,
   durationSeconds?: number,
   description?: string,
-  phase: string
+  phase: string,
 };
 
 export async function getContests(): Promise<Array<Contest>> {
-  const cfData: {result: Array<CFContest>} = JSON.parse(await request('http://codeforces.com/api/contest.list'));
+  const cfData: { result: Array<CFContest> } = JSON.parse(
+    await request('http://codeforces.com/api/contest.list'),
+  );
 
   return cfData.result.map((contestData: CFContest) => {
     // setting required fields
@@ -20,7 +22,7 @@ export async function getContests(): Promise<Array<Contest>> {
       name: contestData.name,
       code: contestData.id,
       judge: 'codeforces',
-      url: 'http://codeforces.com/contests/' + contestData.id
+      url: 'http://codeforces.com/contests/' + contestData.id,
     };
 
     // setting fields that may be absent
@@ -32,12 +34,14 @@ export async function getContests(): Promise<Array<Contest>> {
       contest.description = contestData.description;
 
     // setting contest state
-    if (contestData.phase === 'BEFORE')
-      contest.state = 'UPCOMING';
-    else if (['CODING', 'PENDING_SYSTEM_TEST', 'SYSTEM_TEST'].includes(contestData.phase))
+    if (contestData.phase === 'BEFORE') contest.state = 'UPCOMING';
+    else if (
+      ['CODING', 'PENDING_SYSTEM_TEST', 'SYSTEM_TEST'].includes(
+        contestData.phase,
+      )
+    )
       contest.state = 'RUNNING';
-    else if (contestData.phase === 'FINISHED')
-      contest.state = 'FINISHED';
+    else if (contestData.phase === 'FINISHED') contest.state = 'FINISHED';
 
     return contest;
   });

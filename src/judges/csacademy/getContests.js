@@ -8,38 +8,41 @@ export function getContests(): Promise<Array<Contest>> {
     var options = {
       url: 'http://csacademy.com/contests/',
       headers: {
-        'x-requested-with': 'XMLHttpRequest'
-      }
+        'x-requested-with': 'XMLHttpRequest',
+      },
     };
     request(options, (error: Object, response: Object, body: string) => {
       if (response && response.statusCode == 200) {
-        let contests: Array<Contest> = [];
+        const contests: Array<Contest> = [];
 
-        let data: Object = JSON.parse(body).state.Contest;
-        for (let index: string in data) {
-          let info: Object = data[index];
+        const data: Object = JSON.parse(body).state.Contest;
+        for (const index: string in data) {
+          const info: Object = data[index];
 
           // setting required fields
-          let contest: Contest = {
+          const contest: Contest = {
             name: 'CSAcademy ' + info.longName,
             code: info.id,
             judge: 'csacademy',
-            url: 'http://csacademy.com/contest/' + info.name
+            url: 'http://csacademy.com/contest/' + info.name,
           };
 
           // setting fields that may be absent
           if ('startTime' in info && info.startTime != null)
             contest.startTime = new Date(parseInt(info.startTime) * 1000);
           if (contest.startTime != null) {
-            let startTime: Date = contest.startTime;
-            let currentTime: Date = new Date();
+            const startTime: Date = contest.startTime;
+            const currentTime: Date = new Date();
             if ('endTime' in info && info.endTime != null) {
-              let endTime: Date = new Date(parseInt(info.endTime) * 1000);
+              const endTime: Date = new Date(parseInt(info.endTime) * 1000);
               contest.duration = Math.max(endTime - startTime, 0);
             }
 
             contest.state = currentTime < startTime ? 'UPCOMING' : 'RUNNING';
-            if (contest.duration != null && currentTime > new Date(startTime + contest.duration))
+            if (
+              contest.duration != null &&
+              currentTime > new Date(startTime + contest.duration)
+            )
               contest.state = 'FINISHED';
           }
 
@@ -47,8 +50,7 @@ export function getContests(): Promise<Array<Contest>> {
         }
 
         resolve(contests);
-      } else
-        reject(error);
+      } else reject(error);
     });
   });
 }
