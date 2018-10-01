@@ -12,7 +12,7 @@ type CFContest = {
 };
 
 export async function getContests(): Promise<Array<Contest>> {
-  const cfData : {result: Array<CFContest>} = JSON.parse(await request('http://codeforces.com/api/contest.list'));
+  const cfData: {result: Array<CFContest>} = JSON.parse(await request('http://codeforces.com/api/contest.list'));
 
   return cfData.result.map((contestData: CFContest) => {
     // setting required fields
