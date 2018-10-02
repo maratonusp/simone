@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`filtering 1`] = `
+Array [
+  Object {
+    "code": "MAY18",
+    "duration": 864000,
+    "judge": "codechef",
+    "name": "May Challenge 2018",
+    "startTime": 2018-05-04T09:30:00.000Z,
+    "state": "RUNNING",
+    "url": "https://www.codechef.com/MAY18",
+  },
+  Object {
+    "code": "LOCAPR18",
+    "duration": 172800,
+    "judge": "codechef",
+    "name": "LoC April 2018 (Rated for Division 2)",
+    "startTime": 2018-04-27T18:30:00.000Z,
+    "state": "FINISHED",
+    "url": "https://www.codechef.com/LOCAPR18",
+  },
+  Object {
+    "code": "COX2018",
+    "duration": 10800,
+    "judge": "codechef",
+    "name": "CODEX_X",
+    "startTime": 2018-04-29T14:30:00.000Z,
+    "state": "FINISHED",
+    "url": "https://www.codechef.com/COX2018",
+  },
+]
+`;
+
 exports[`retrieve all contests 1`] = `
 Array [
   Object {
