@@ -1,2 +1,2 @@
 // @flow
-export { filterContests } from './filterContests';
+export { filterStartDate } from './filterStartDate';

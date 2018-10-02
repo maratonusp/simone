@@ -1,10 +1,10 @@
-import { filterContests } from '../../src/utils';
+import { filterStartDate } from '../../src/utils';
 
 function testFilter(contests, from, to) {
   const filteredContests = contests.filter(contest => {
     return contest.startTime >= from && contest.startTime <= to;
   });
-  contests = filterContests(contests, from, to);
+  contests = filterStartDate(contests, from, to);
   return expect(contests).toMatchObject(filteredContests);
 }
 

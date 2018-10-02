@@ -1,7 +1,7 @@
 // @flow
 import request from 'request-promise-native';
 import type { Contest } from '../../types';
-import { filterContests } from '../../utils';
+import { filterStartDate } from '../../utils';
 
 type CFContest = {
   name: string,
@@ -20,7 +20,7 @@ export async function getContests(
     await request('http://codeforces.com/api/contest.list'),
   );
 
-  return filterContests(
+  return filterStartDate(
     cfData.result.map((contestData: CFContest) => {
       // setting required fields
       const contest: Contest = {

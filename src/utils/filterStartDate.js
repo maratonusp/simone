@@ -1,7 +1,7 @@
 // @flow
 import type { Contest } from '../types';
 
-export function filterContests(
+export function filterStartDate(
   contests: Array<Contest>,
   from?: Date,
   to?: Date,
