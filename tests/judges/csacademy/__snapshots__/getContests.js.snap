@@ -1,5 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`filtering 1`] = `
+Array [
+  Object {
+    "code": 36718,
+    "duration": 7200000,
+    "judge": "csacademy",
+    "name": "CSAcademy Round #76 (Div. 2 only)",
+    "startTime": 2018-04-12T15:05:00.000Z,
+    "state": "FINISHED",
+    "url": "http://csacademy.com/contest/round-76",
+  },
+  Object {
+    "code": 36719,
+    "duration": 7200000,
+    "judge": "csacademy",
+    "name": "CSAcademy Round #77 (Div. 2 only)",
+    "startTime": 2018-04-18T15:05:00.000Z,
+    "state": "FINISHED",
+    "url": "http://csacademy.com/contest/round-77",
+  },
+  Object {
+    "code": 36721,
+    "duration": 7200000,
+    "judge": "csacademy",
+    "name": "CSAcademy Round #78 (based on Romanian Olympiad IOI selection camp)",
+    "startTime": 2018-04-25T15:05:00.000Z,
+    "state": "FINISHED",
+    "url": "http://csacademy.com/contest/round-78",
+  },
+  Object {
+    "code": 37582,
+    "duration": 7200000,
+    "judge": "csacademy",
+    "name": "CSAcademy Round #79 (Div. 2 only)",
+    "startTime": 2018-05-09T15:05:00.000Z,
+    "state": "RUNNING",
+    "url": "http://csacademy.com/contest/round-79",
+  },
+]
+`;
+
 exports[`retrieve all contests 1`] = `
 Array [
   Object {

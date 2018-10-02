@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`filtering 1`] = `
+Array [
+  Object {
+    "code": "123",
+    "duration": 111,
+    "judge": "codeforces",
+    "name": "1",
+    "startTime": 1970-01-01T00:03:52.000Z,
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/123",
+  },
+  Object {
+    "code": "123",
+    "duration": 111,
+    "judge": "codeforces",
+    "name": "1",
+    "startTime": 1970-01-01T00:03:54.000Z,
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/123",
+  },
+]
+`;
+
+exports[`multiple contests 1`] = `
+Array [
+  Object {
+    "code": "1",
+    "duration": 3600,
+    "judge": "codeforces",
+    "name": "Contest1",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/1",
+  },
+  Object {
+    "code": "2",
+    "duration": 7200,
+    "judge": "codeforces",
+    "name": "Contest2",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/2",
+  },
+  Object {
+    "code": "3",
+    "duration": 10800,
+    "judge": "codeforces",
+    "name": "Contest3",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/3",
+  },
+  Object {
+    "code": "4",
+    "duration": 14400,
+    "judge": "codeforces",
+    "name": "Contest4",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/4",
+  },
+  Object {
+    "code": "5",
+    "duration": 18000,
+    "judge": "codeforces",
+    "name": "Contest5",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/5",
+  },
+  Object {
+    "code": "6",
+    "duration": 21600,
+    "judge": "codeforces",
+    "name": "Contest6",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/6",
+  },
+  Object {
+    "code": "7",
+    "duration": 25200,
+    "judge": "codeforces",
+    "name": "Contest7",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/7",
+  },
+  Object {
+    "code": "8",
+    "duration": 28800,
+    "judge": "codeforces",
+    "name": "Contest8",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/8",
+  },
+  Object {
+    "code": "9",
+    "duration": 32400,
+    "judge": "codeforces",
+    "name": "Contest9",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/9",
+  },
+  Object {
+    "code": "10",
+    "duration": 36000,
+    "judge": "codeforces",
+    "name": "Contest10",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/10",
+  },
+]
+`;
+
+exports[`simple contest 1`] = `
+Array [
+  Object {
+    "code": "123",
+    "duration": 321,
+    "judge": "codeforces",
+    "name": "Oi",
+    "state": "UPCOMING",
+    "url": "http://codeforces.com/contests/123",
+  },
+]
+`;

@@ -14,3 +14,12 @@ afterEach(() => (Date.now = old_now));
 test('retrieve all contests', () => {
   return expect(getContests()).resolves.toMatchSnapshot();
 });
+
+test('filtering', () => {
+  return expect(
+    getContests(
+      new Date(date.getTime() - 1000 * 60 * 60 * 24 * 30),
+      new Date(date.getTime() + 1000 * 60 * 60 * 24 * 5),
+    ),
+  ).resolves.toMatchSnapshot();
+});
