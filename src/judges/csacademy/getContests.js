@@ -1,5 +1,6 @@
 // @flow
 import request from 'request-promise-native';
+import { filterStartDate } from '../../utils';
 import type { Contest } from '../../types';
 
 type CSContest = {|
@@ -10,7 +11,10 @@ type CSContest = {|
   endTime: ?string,
 |};
 
-export async function getContests(): Promise<Array<Contest>> {
+export async function getContests(
+  from?: Date,
+  to?: Date,
+): Promise<Array<Contest>> {
   var options = {
     url: 'http://csacademy.com/contests/',
     headers: {
@@ -58,5 +62,5 @@ export async function getContests(): Promise<Array<Contest>> {
 
     contests.push(contest);
   }
-  return contests;
+  return filterStartDate(contests, from, to);
 }
