@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`retrieve all contests 1`] = `
+Array [
+  Object {
+    "code": "MAY18",
+    "duration": 864000,
+    "judge": "codechef",
+    "name": "May Challenge 2018",
+    "startTime": 2018-05-04T09:30:00.000Z,
+    "state": "RUNNING",
+    "url": "https://www.codechef.com/MAY18",
+  },
+  Object {
+    "code": "INOIPRAC",
+    "duration": 126230400,
+    "judge": "codechef",
+    "name": "INOI Practice Contest",
+    "startTime": 2016-01-04T18:30:00.000Z,
+    "state": "RUNNING",
+    "url": "https://www.codechef.com/INOIPRAC",
+  },
+  Object {
+    "code": "COOK94",
+    "duration": 9000,
+    "judge": "codechef",
+    "name": "May Cook-Off 2018",
+    "startTime": 2018-05-20T16:00:00.000Z,
+    "state": "UPCOMING",
+    "url": "https://www.codechef.com/COOK94",
+  },
+  Object {
+    "code": "LTIME60",
+    "duration": 10800,
+    "judge": "codechef",
+    "name": "May Lunchtime 2018",
+    "startTime": 2018-05-26T14:00:00.000Z,
+    "state": "UPCOMING",
+    "url": "https://www.codechef.com/LTIME60",
+  },
+  Object {
+    "code": "LOCAPR18",
+    "duration": 172800,
+    "judge": "codechef",
+    "name": "LoC April 2018 (Rated for Division 2)",
+    "startTime": 2018-04-27T18:30:00.000Z,
+    "state": "FINISHED",
+    "url": "https://www.codechef.com/LOCAPR18",
+  },
+  Object {
+    "code": "COX2018",
+    "duration": 10800,
+    "judge": "codechef",
+    "name": "CODEX_X",
+    "startTime": 2018-04-29T14:30:00.000Z,
+    "state": "FINISHED",
+    "url": "https://www.codechef.com/COX2018",
+  },
+]
+`;

@@ -16,7 +16,7 @@ function parse(row: HTMLTableRowElement): Contest {
   const duration: number = (endTime.getTime() - startTime.getTime()) / 1000;
 
   let state: State;
-  const now = new Date();
+  const now = Date.now();
   if (startTime > now) state = 'UPCOMING';
   else if (endTime <= now) state = 'FINISHED';
   else state = 'RUNNING';
@@ -34,7 +34,7 @@ function parse(row: HTMLTableRowElement): Contest {
 
 export async function getContests(): Promise<Array<Contest>> {
   // dom is a JSDOM, which is a third-party library that was not built with Flow
-  const dom: any = JSDOM.fromURL('https://www.codechef.com/contests');
+  const dom: any = await JSDOM.fromURL('https://www.codechef.com/contests');
   const document: Document = dom.window.document;
 
   const contestsTables: NodeList<HTMLElement> = document.querySelectorAll(
@@ -44,12 +44,11 @@ export async function getContests(): Promise<Array<Contest>> {
   const contests: Array<Contest> = [];
 
   contestsTables.forEach(table => {
-    if (table instanceof HTMLTableElement) {
-      const rows: HTMLCollection<HTMLTableRowElement> = table.tBodies[0].rows;
-      Array.from(rows).forEach(row => {
-        contests.push(parse(row));
-      });
-    }
+    const tab: HTMLTableElement = (table: any);
+    const rows: HTMLCollection<HTMLTableRowElement> = tab.tBodies[0].rows;
+    Array.from(rows).forEach(row => {
+      contests.push(parse(row));
+    });
   });
 
   return contests;
