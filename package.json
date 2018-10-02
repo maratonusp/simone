@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Standardized Online Judge API",
   "main": "lib/index.js",
+  "engines": {
+    "node": ">=8.9.1"
+  },
   "scripts": {
     "build": "babel src/ -d lib/ && flow-copy-source src lib",
     "prepare": "npm run build",
