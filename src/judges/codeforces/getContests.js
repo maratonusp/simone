@@ -1,6 +1,7 @@
 // @flow
 import request from 'request-promise-native';
 import type { Contest } from '../../types';
+import type { GetContestsOptions } from '../../types/api';
 import { filterStartDate } from '../../utils';
 
 type CFContest = {
@@ -13,8 +14,7 @@ type CFContest = {
 };
 
 export async function getContests(
-  from?: Date,
-  to?: Date,
+  options: GetContestsOptions,
 ): Promise<Array<Contest>> {
   const cfData: { result: Array<CFContest> } = JSON.parse(
     await request('http://codeforces.com/api/contest.list'),
@@ -50,7 +50,7 @@ export async function getContests(
 
       return contest;
     }),
-    from,
-    to,
+    options.startFrom,
+    options.startTo,
   );
 }

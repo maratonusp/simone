@@ -2,6 +2,7 @@
 import request from 'request-promise-native';
 import { filterStartDate } from '../../utils';
 import type { Contest } from '../../types';
+import type { GetContestsOptions } from '../../types/api';
 
 type CSContest = {|
   longName: string,
@@ -12,16 +13,15 @@ type CSContest = {|
 |};
 
 export async function getContests(
-  from?: Date,
-  to?: Date,
+  options: GetContestsOptions,
 ): Promise<Array<Contest>> {
-  var options = {
+  var request_options = {
     url: 'http://csacademy.com/contests/',
     headers: {
       'x-requested-with': 'XMLHttpRequest',
     },
   };
-  const body = await request(options);
+  const body = await request(request_options);
   const contests: Array<Contest> = [];
 
   const data: Object = JSON.parse(body).state.Contest;
@@ -62,5 +62,6 @@ export async function getContests(
 
     contests.push(contest);
   }
-  return filterStartDate(contests, from, to);
+
+  return filterStartDate(contests, options.startFrom, options.startTo);
 }

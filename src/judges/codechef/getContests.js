@@ -3,6 +3,7 @@ import { JSDOM } from 'jsdom';
 import { filterStartDate } from '../../utils';
 import type { Contest } from '../../types';
 import type { State } from '../../types';
+import type { GetContestsOptions } from '../../types/api';
 
 function parse(row: HTMLTableRowElement): Contest {
   // flow has an issue concerning the cells field.
@@ -34,8 +35,7 @@ function parse(row: HTMLTableRowElement): Contest {
 }
 
 export async function getContests(
-  from?: Date,
-  to?: Date,
+  options: GetContestsOptions,
 ): Promise<Array<Contest>> {
   // dom is a JSDOM, which is a third-party library that was not built with Flow
   const dom: any = await JSDOM.fromURL('https://www.codechef.com/contests');
@@ -55,5 +55,5 @@ export async function getContests(
     });
   });
 
-  return filterStartDate(contests, from, to);
+  return filterStartDate(contests, options.startFrom, options.startTo);
 }

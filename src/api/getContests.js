@@ -1,14 +1,19 @@
 // @flow
 
 import type { Contest } from '../types/contest';
+import type { GetContestsOptions } from '../types/api';
 import judges from '../judges';
 
-async function getContests(from?: Date, to?: Date): Promise<Array<Contest>> {
+const default_options = Object.freeze({});
+
+export async function getContests(
+  options?: GetContestsOptions = default_options,
+): Promise<Array<Contest>> {
   const contests: Array<Contest> = [];
   const promises: Array<Promise<Array<Contest>>> = [];
   Object.keys(judges).forEach(judge => {
     promises.push(
-      judges[judge].getContests(from, to).catch(() => {
+      judges[judge].getContests(options).catch(() => {
         console.error(judge + ' failed to getContests.');
         return [];
       }),
@@ -18,7 +23,3 @@ async function getContests(from?: Date, to?: Date): Promise<Array<Contest>> {
   for (const contestList of results) contests.push(...contestList);
   return contests;
 }
-
-export default {
-  getContests: getContests,
-};

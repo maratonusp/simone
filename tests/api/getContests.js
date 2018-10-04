@@ -1,3 +1,4 @@
+// @flow
 import api from '../../src/api';
 import judges from '../../src/judges';
 jest.mock('../../src/judges');
@@ -13,9 +14,9 @@ test('concatenates contest lists correctly', () => {
   // This is to make sure getContests doesn't even look at any of its fields.
   const blocked = blocked_object();
   let countJudges = 0;
-  for (const judge of Object.values(judges)) {
+  for (const judge: any of Object.values(judges)) {
     countJudges++;
-    judge.getContests.mockImplementation(() => Promise.resolve([blocked]));
+    judge.getContests = jest.fn(() => Promise.resolve([blocked]));
   }
   return expect(api.getContests()).resolves.toEqual(
     new Array(countJudges).fill(blocked),
@@ -25,21 +26,19 @@ test('concatenates contest lists correctly', () => {
 test('ignores if codeforces fails', () => {
   const blocked = blocked_object();
   let countJudges = 0;
-  for (const judge of Object.values(judges)) {
+  for (const judge: any of Object.values(judges)) {
     countJudges++;
-    judge.getContests.mockImplementation(() => Promise.resolve([blocked]));
+    judge.getContests = jest.fn(() => Promise.resolve([blocked]));
   }
   // cf fails
-  judges.codeforces.getContests.mockImplementation(() =>
-    Promise.reject('error'),
-  );
+  judges.codeforces.getContests = jest.fn(() => Promise.reject('error'));
   return expect(api.getContests()).resolves.toEqual(
     new Array(countJudges - 1).fill(blocked),
   );
 });
 
 test('ignores if all judges fails', () => {
-  for (const judge of Object.values(judges))
+  for (const judge: any of Object.values(judges))
     judge.getContests = jest.fn(() => Promise.reject('error'));
   return expect(api.getContests()).resolves.toEqual([]);
 });
@@ -50,8 +49,10 @@ test('filtering is correctly passed to judges', async () => {
   Object.keys(judges).forEach(
     judge => (judges[judge].getContests = jest.fn(() => Promise.resolve([]))),
   );
-  expect(await api.getContests(from, to)).toEqual([]);
+  expect(await api.getContests({ startFrom: from, startTo: to })).toEqual([]);
   // each judge is called once with expected arguments
-  for (const judge of Object.values(judges))
-    expect(judge.getContests.mock.calls).toEqual([[from, to]]);
+  for (const judge: any of Object.values(judges))
+    expect(judge.getContests.mock.calls).toEqual([
+      [{ startFrom: from, startTo: to }],
+    ]);
 });

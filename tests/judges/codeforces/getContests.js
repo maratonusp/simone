@@ -1,3 +1,5 @@
+// @flow
+
 jest.mock('request');
 const request = require('request');
 import { getContests } from './../../../src/judges/codeforces/getContests';
@@ -11,7 +13,7 @@ function mapToAPIReturn(...contests) {
 
 function testContests(...contests) {
   request.mockReturnValueOnce(Promise.resolve(mapToAPIReturn(...contests)));
-  return expect(getContests()).resolves.toMatchSnapshot();
+  return expect(getContests({})).resolves.toMatchSnapshot();
 }
 
 test('simple contest', () => {
@@ -55,6 +57,6 @@ test('filtering', () => {
     Promise.resolve(mapToAPIReturn(...inside, ...outside)),
   );
   return expect(
-    getContests(new Date(231000), new Date(235000)),
+    getContests({ startFrom: new Date(231000), startTo: new Date(235000) }),
   ).resolves.toMatchSnapshot();
 });
