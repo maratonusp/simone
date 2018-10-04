@@ -1,17 +1,16 @@
 // @flow
 
 import { getContests } from '../../../src/judges/codechef/getContests';
-import { JSDOM } from 'jsdom';
-
-JSDOM.fromURL = jest
-  .fn()
-  .mockReturnValue(JSDOM.fromFile('tests/resources/codechef.html'));
+import nock from 'nock';
 
 // For some reason if we mock the Date constructor jest does not work properly
 const date = new Date(Date.UTC(2018, 4, 8, 10));
 const old_now = Date.now;
 beforeEach(() => {
   (Date: any).now = () => new Date(date);
+  nock('https://www.codechef.com')
+    .get('/contests')
+    .replyWithFile(200, 'tests/resources/codechef.html');
 });
 afterEach(() => {
   (Date: any).now = old_now;

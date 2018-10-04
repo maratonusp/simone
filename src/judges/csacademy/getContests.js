@@ -21,6 +21,7 @@ export async function getContests(
     headers: {
       'x-requested-with': 'XMLHttpRequest',
     },
+    timeout: options.timeout || 8000,
   };
   const body = await request(request_options);
   const contests: Array<Contest> = [];

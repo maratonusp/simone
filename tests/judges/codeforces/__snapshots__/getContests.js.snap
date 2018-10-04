@@ -9,7 +9,7 @@ Array [
     "name": "1",
     "startTime": 1970-01-01T00:03:52.000Z,
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/123",
+    "url": "https://codeforces.com/contests/123",
   },
   Object {
     "code": "123",
@@ -18,7 +18,7 @@ Array [
     "name": "1",
     "startTime": 1970-01-01T00:03:54.000Z,
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/123",
+    "url": "https://codeforces.com/contests/123",
   },
 ]
 `;
@@ -31,7 +31,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest1",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/1",
+    "url": "https://codeforces.com/contests/1",
   },
   Object {
     "code": "2",
@@ -39,7 +39,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest2",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/2",
+    "url": "https://codeforces.com/contests/2",
   },
   Object {
     "code": "3",
@@ -47,7 +47,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest3",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/3",
+    "url": "https://codeforces.com/contests/3",
   },
   Object {
     "code": "4",
@@ -55,7 +55,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest4",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/4",
+    "url": "https://codeforces.com/contests/4",
   },
   Object {
     "code": "5",
@@ -63,7 +63,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest5",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/5",
+    "url": "https://codeforces.com/contests/5",
   },
   Object {
     "code": "6",
@@ -71,7 +71,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest6",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/6",
+    "url": "https://codeforces.com/contests/6",
   },
   Object {
     "code": "7",
@@ -79,7 +79,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest7",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/7",
+    "url": "https://codeforces.com/contests/7",
   },
   Object {
     "code": "8",
@@ -87,7 +87,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest8",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/8",
+    "url": "https://codeforces.com/contests/8",
   },
   Object {
     "code": "9",
@@ -95,7 +95,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest9",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/9",
+    "url": "https://codeforces.com/contests/9",
   },
   Object {
     "code": "10",
@@ -103,7 +103,7 @@ Array [
     "judge": "codeforces",
     "name": "Contest10",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/10",
+    "url": "https://codeforces.com/contests/10",
   },
 ]
 `;
@@ -116,7 +116,21 @@ Array [
     "judge": "codeforces",
     "name": "Oi",
     "state": "UPCOMING",
-    "url": "http://codeforces.com/contests/123",
+    "url": "https://codeforces.com/contests/123",
+  },
+]
+`;
+
+exports[`timeout 1`] = `
+Array [
+  Object {
+    "code": "123",
+    "duration": 10,
+    "judge": "codeforces",
+    "name": "1",
+    "startTime": 1970-01-01T00:00:01.000Z,
+    "state": "UPCOMING",
+    "url": "https://codeforces.com/contests/123",
   },
 ]
 `;

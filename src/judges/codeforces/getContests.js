@@ -17,8 +17,12 @@ type CFContest = {
 export async function getContests(
   options: GetContestsOptions,
 ): Promise<Array<Contest>> {
+  const request_options = {
+    url: 'https://codeforces.com/api/contest.list',
+    timeout: options.timeout || 8000,
+  };
   const cfData: { result: Array<CFContest> } = JSON.parse(
-    await request('http://codeforces.com/api/contest.list'),
+    await request(request_options),
   );
 
   return filterStartDate(
@@ -28,7 +32,7 @@ export async function getContests(
         name: contestData.name,
         code: contestData.id,
         judge: 'codeforces',
-        url: 'http://codeforces.com/contests/' + contestData.id,
+        url: 'https://codeforces.com/contests/' + contestData.id,
       };
 
       // setting fields that may be absent

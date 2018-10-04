@@ -1,26 +1,20 @@
 // @flow
 
 import { getContests } from '../../../src/judges/csacademy/getContests';
-import fs from 'fs';
-import request from 'request-promise-native';
+import nock from 'nock';
 
 // For some reason if we mock the Date constructor jest does not work properly
 // We should create the date in UTC since the default Date constructor takes
 // timezone into account, so the tests may break in different machines
 const date = new Date(Date.UTC(2018, 4, 9, 15, 10));
 const old_now = Date.now;
-const old_request = request;
 beforeEach(() => {
-  global.request = jest.fn(
-    () =>
-      new Promise(resolve =>
-        fs.readFile('tests/resources/csacademy.html', resolve),
-      ),
-  );
+  nock('https://csacademy.com')
+    .get('/contests/')
+    .replyWithFile(200, 'tests/resources/csacademy.html');
   (Date: any).now = () => new Date(date);
 });
 afterEach(() => {
-  global.request = old_request;
   (Date: any).now = old_now;
 });
 

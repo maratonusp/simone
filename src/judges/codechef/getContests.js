@@ -2,6 +2,7 @@
 
 import { JSDOM } from 'jsdom';
 import { filterStartDate } from '../../utils';
+import request from 'request-promise-native';
 import type { Contest } from '../../types';
 import type { State } from '../../types';
 import type { GetContestsOptions } from '../../types/api';
@@ -38,8 +39,16 @@ function parse(row: HTMLTableRowElement): Contest {
 export async function getContests(
   options: GetContestsOptions,
 ): Promise<Array<Contest>> {
+  const request_options = {
+    url: 'https://www.codechef.com/contests',
+    timeout: options.timeout || 8000,
+    headers: {
+      'User-Agent': 'node.js',
+    },
+  };
+  const html = await request(request_options);
   // dom is a JSDOM, which is a third-party library that was not built with Flow
-  const dom: any = await JSDOM.fromURL('https://www.codechef.com/contests');
+  const dom = new JSDOM(html);
   const document: Document = dom.window.document;
 
   const contestsTables: NodeList<HTMLElement> = document.querySelectorAll(

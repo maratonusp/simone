@@ -483,7 +483,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","username":null});
                     </div>
                     <div id="sidebar-content" class="cols-2">
                       <div class="content-spacer">
-                        
+
                           <div class="rounded-block">
                             <div class="rounded-b-header">
                               <div class="rounded-b-footer"><div id="block-block-72" class="block block-block">
@@ -520,12 +520,12 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","username":null});
   function formatTime(offset) {
    ts = Date.now() - offset;
    now = new Date(ts);
-   
+
    localtime = new Date();
    hour = now.getHours();
    min = now.getMinutes();
    sec = now.getSeconds();
-   
+
    if (min <= 9) {
     min = "0" + min;
   }
@@ -545,14 +545,14 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","username":null});
   if (hour == 00) {
     hour = "12";
   }
-  
+
   $('#server-time').html(((hour<=9) ? "0" + hour : hour) + ":" + min + ":" + sec + add);
-  
+
   nextSec = (now.getTime() + 1000);
-  
+
   setTimeout("formatTime("+offset+")", 1000);
 }
-function getDtTimeZone() 
+function getDtTimeZone()
 {
   var rightNow = new Date();
   var toDay = new Date(rightNow.getFullYear(), 0, 1, 0, 0, 0, 0);
@@ -687,7 +687,7 @@ data: 'umtza='+d.toString(),
   (function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
 </script>
 <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=q16Cj1a8gN00iz" style="display:none" height="1" width="1" alt="" /></noscript>
-<!-- End Alexa Certify Javascript -->  
+<!-- End Alexa Certify Javascript -->
 
 <div class='cc-footer-seo'>
   <style scoped>
@@ -771,11 +771,11 @@ data: 'umtza='+d.toString(),
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window,document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '460995904241257'); 
+    fbq('init', '460995904241257');
     fbq('track', 'PageView');
   </script>
   <noscript>
-   <img height="1" width="1" 
+   <img height="1" width="1"
    src="https://www.facebook.com/tr?id=460995904241257&ev=PageView
    &noscript=1"/>
  </noscript>
