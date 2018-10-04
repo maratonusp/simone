@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`filter contests 1`] = `
+Array [
+  Object {
+    "code": "1",
+    "judge": "codeforces",
+    "name": "name",
+    "startTime": 1970-01-01T00:00:01.000Z,
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  Object {
+    "code": "1",
+    "judge": "codeforces",
+    "name": "name",
+    "startTime": 1970-01-01T00:00:02.000Z,
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  Object {
+    "code": "1",
+    "judge": "codeforces",
+    "name": "name",
+    "startTime": 1970-01-01T00:00:03.000Z,
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  Object {
+    "code": "1",
+    "judge": "codeforces",
+    "name": "name",
+    "startTime": 1970-01-01T00:00:04.000Z,
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  Object {
+    "code": "1",
+    "judge": "codeforces",
+    "name": "name",
+    "startTime": 1970-01-01T00:00:05.000Z,
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  Object {
+    "code": "1",
+    "judge": "codeforces",
+    "name": "name",
+    "startTime": 1970-01-01T00:00:06.000Z,
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+  Object {
+    "code": "1",
+    "judge": "codeforces",
+    "name": "name",
+    "startTime": 1970-01-01T00:00:07.000Z,
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+]
+`;

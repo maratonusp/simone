@@ -8,14 +8,14 @@ export function filterStartDate(
   to?: Date,
 ): Array<Contest> {
   contests = contests.filter(contest => {
-    if (from instanceof Date)
-      if (contest.startTime instanceof Date) return contest.startTime >= from;
+    if (from != null)
+      if (contest.startTime != null) return contest.startTime >= from;
       else return false;
     else return true;
   });
   contests = contests.filter(contest => {
-    if (to instanceof Date)
-      if (contest.startTime instanceof Date) return contest.startTime <= to;
+    if (to != null)
+      if (contest.startTime != null) return contest.startTime <= to;
       else return false;
     else return true;
   });
