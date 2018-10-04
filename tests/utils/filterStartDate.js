@@ -1,3 +1,5 @@
+// @flow
+
 import { filterStartDate } from '../../src/utils';
 
 function testFilter(contests, from, to) {

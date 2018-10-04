@@ -1,4 +1,5 @@
 // @flow
+
 import type { Contest } from '../types';
 
 export function filterStartDate(

@@ -1,4 +1,5 @@
 // @flow
+
 import request from 'request-promise-native';
 import { filterStartDate } from '../../utils';
 import type { Contest } from '../../types';

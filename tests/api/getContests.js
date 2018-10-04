@@ -1,4 +1,5 @@
 // @flow
+
 import api from '../../src/api';
 import judges from '../../src/judges';
 jest.mock('../../src/judges');

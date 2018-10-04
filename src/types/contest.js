@@ -1,4 +1,5 @@
 // @flow
+
 export type Judge = 'codeforces' | 'csacademy' | 'codechef';
 export type State = 'UPCOMING' | 'RUNNING' | 'FINISHED';
 

@@ -1,4 +1,5 @@
 // @flow
+
 import { JSDOM } from 'jsdom';
 import { filterStartDate } from '../../utils';
 import type { Contest } from '../../types';
@@ -24,13 +25,13 @@ function parse(row: HTMLTableRowElement): Contest {
   else state = 'RUNNING';
 
   return {
-    name: name,
-    code: code,
+    name,
+    code,
     judge: 'codechef',
-    startTime: startTime,
-    duration: duration,
-    state: state,
-    url: url,
+    startTime,
+    duration,
+    state,
+    url,
   };
 }
 

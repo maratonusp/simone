@@ -1,4 +1,5 @@
 // @flow
+
 import request from 'request-promise-native';
 import type { Contest } from '../../types';
 import type { GetContestsOptions } from '../../types/api';
